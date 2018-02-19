@@ -9,6 +9,8 @@ import { PerfilesService } from '../../services/perfiles.service';
 })
 export class PerfilesComponent implements OnInit {
 
+  fecha= new Date();
+
   perfiles:any[] = [];
   loading:boolean = true;
 

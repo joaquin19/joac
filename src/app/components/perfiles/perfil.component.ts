@@ -13,6 +13,9 @@ import {PerfilesService} from '../../services/perfiles.service';
 })
 export class PerfilComponent implements OnInit {
 
+  fecha= new Date();
+
+
   perfil:Perfil = {
     nombre:"",
     detalles:"",

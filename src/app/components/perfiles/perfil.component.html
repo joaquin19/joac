@@ -1,4 +1,7 @@
-
+<div class="text-center">Bienvenido</div>
+  <div class="float-right">{{fecha | date:'shortTime'}}</div>
+  <div class="">{{fecha | date:'mediumDate'}}</div>
+  
 <h3>Contacto:<small>  {{perfil.nombre}}</small></h3>
 <button [routerLink]="['/perfiles']"
         type="button"

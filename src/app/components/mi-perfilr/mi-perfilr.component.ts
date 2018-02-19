@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MiPerfilrComponent implements OnInit {
 
+  fecha= new Date();
+
   constructor() { }
 
   ngOnInit() {
