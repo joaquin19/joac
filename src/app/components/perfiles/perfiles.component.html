@@ -1,0 +1,54 @@
+
+
+<h1>Contactos</h1>
+<hr>
+
+<div class="row">
+  <div class="col-md-12 text-right">
+    <button [routerLink]="['/perfil', 'nuevo']"
+            class="btn btn-outline-primary"
+            type="button">
+              Add Perfil
+            </button>
+  </div>
+</div>
+<br>
+
+<div class="row animated fadeIn fast">
+  <div class="col-md-12">
+    <div class="table-responsive">
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Telefono</th>
+            <th scope="col" class="text-right">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let key of perfiles | keys; let i = index">
+            <th>{{i + 1}}</th>
+            <td>{{perfiles[key].nombre}}</td>
+            <td>{{perfiles[key].telefono}}</td>
+            <td class="text-right w140">
+              <img src="assets/edit.png"
+                   [routerLink]="['/perfil', key]"
+                      type="button"
+                      class="btn btn-outline-success img2">
+<!---->
+              <img src="assets/delete.png"
+                   (click)="deletPerfil(key)"
+                   type="button"
+                   class="btn btn-outline-danger img2">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="(perfiles | keys).length == 0 && !loading"
+           class="alert alert-info" role="alert">
+        <strong>No hay</strong>registros que mostrar
+      </div>
+    </div>
+  </div>
+</div>

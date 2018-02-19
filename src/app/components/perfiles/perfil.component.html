@@ -1,0 +1,77 @@
+
+<h3>Contacto:<small>  {{perfil.nombre}}</small></h3>
+<button [routerLink]="['/perfiles']"
+        type="button"
+        class="btn btn-outline-danger">
+        Return
+</button>
+<button (click)="agregarNuevo(forma)"
+        class="btn btn-outline-success"
+        type="button">
+        New Perfil
+</button>
+<hr>
+
+<div class="row animated fadeIn fast">
+  <div class="col-md-12">
+    <form (ngSubmit)="guardar()" #forma="ngForm">
+      <div>
+        <div class="form-group" [ngClass]="{'text-danger':nombre.errors?.required }">
+          <label>Nombre</label>
+          <input [(ngModel)]="perfil.nombre"
+          [ngClass]="{'card border-danger mb-3':nombre.errors?.required }"
+          name="nombre"
+          type="text"
+          #nombre="ngModel"
+          class="form-control"
+          placeholder="Nombre de contacto"
+          required>
+
+          <div *ngIf="nombre.errors?.required" class="text-danger">
+            El nombre es obligatorio
+          </div>
+        </div>
+
+        <div class="form-group" [ngClass]="{'text-danger':telefono.errors?.required }">
+          <label>Telefono</label>
+          <input [(ngModel)]="perfil.telefono"
+          [ngClass]="{'card border-danger mb-3':telefono.errors?.required }"
+          name="telefono"
+          #telefono="ngModel"
+          type="digit"
+          class="form-control"
+          placeholder="Telefono del contacto"
+          maxlength="10"
+          minlength="10"
+          required>
+
+          <div class="text-danger">
+            <div *ngIf="telefono.errors?.required">
+              El telefono es obligatorio
+            </div>
+            <div *ngIf="telefono.errors?.maxlength || telefono.errors?.minlength">
+              Maximo {{telefono.errors.minlength.requiredLength}} caracteres.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Datos extras</label>
+        <textarea [(ngModel)]="perfil.detalles"
+                  type="text"
+                  class="form-control"
+                  placeholder="Domicilio, gustos, etc..."
+                  name="bio">
+        </textarea>
+      </div>
+        <div class="form-group">
+          <button [disabled]="!forma.valid"
+                  type="submit"
+                  class="btn btn-outline-primary">
+            Guardar cambios
+          </button>
+        </div>
+    </form>
+  </div>
+</div>
